@@ -22,54 +22,106 @@ public_users.post("/register", (req,res) => {
   return res.status(300).json({message: "Yet to be implemented"});
 });
 
-// Get the book list available in the shop
-public_users.get('/',function (req, res) {
-  //Write your code here
-  res.send(JSON.stringify(books,null,4));
-  return res.status(300).json({message: "This is the book list available in the shop"});
-});
+let myPromise = new Promise((resolve,reject) => {
+    setTimeout(() => {
+        // Get the book list available in the shop
+ public_users.get('/',function (req, res) {
+    //Write your code here
+    res.send(JSON.stringify(books,null,4));
+    return res.status(300).json({message: "This is the book list available in the shop"});
+  });
+      resolve("Promise resolved")
+    },6000)})
+//Console log before calling the promise
+console.log("Before calling promise");
+//Call the promise and wait for it to be resolved and then print a message.
+myPromise.then((successMessage) => {
+    console.log("From Callback " + successMessage)
+  })
+//Console log after calling the promise
+  console.log("After calling promise");
+
+
 
 // Get book details based on ISBN
-public_users.get('/isbn/:isbn',function (req, res) {
-  //Write your code here
-  const isbn = req.params.isbn;
-  let filtered_books = [];
-  filtered_books = books[isbn];
-  return res.send(filtered_books);
-  return res.status(300).json({message: "Yet to be implemented"});
- });
+let myPromise1 = new Promise((resolve,reject) => {
+    setTimeout(() => {
+        public_users.get('/isbn/:isbn',function (req, res) {
+            //Write your code here
+            const isbn = req.params.isbn;
+            let filtered_books = [];
+            filtered_books = books[isbn];
+            return res.send(filtered_books);
+            return res.status(300).json({message: "Yet to be implemented"});
+           });
+      resolve("Promise resolved")
+    },6000)})
+//Console log before calling the promise
+console.log("Before calling promise");
+//Call the promise and wait for it to be resolved and then print a message.
+myPromise1.then((successMessage) => {
+    console.log("From Callback " + successMessage)
+  })
+//Console log after calling the promise
+  console.log("After calling promise");
+
   
 // Get book details based on author
-public_users.get('/author/:author',function (req, res) {
-  //Write your code here
-  const title = req.params.title;
-  let keys = [];
-  keys = Object.keys(books);
-  for(let i = 0; i < keys.length; i++)
-  {
-    if(books[keys[i]].title === title)
-    {
-        return res.send(books[keys[i]]);
-    }
-  }
-  return res.status(300).json({message: "Yet to be implemented"});
-});
+let myPromise2 = new Promise((resolve,reject) => {
+    setTimeout(() => {
+        public_users.get('/author/:author',function (req, res) {
+            //Write your code here
+            const title = req.params.title;
+            let keys = [];
+            keys = Object.keys(books);
+            for(let i = 0; i < keys.length; i++)
+            {
+              if(books[keys[i]].title === title)
+              {
+                  return res.send(books[keys[i]]);
+              }
+            }
+            return res.status(300).json({message: "Yet to be implemented"});
+          });
+      resolve("Promise resolved")
+    },6000)})
+//Console log before calling the promise
+console.log("Before calling promise");
+//Call the promise and wait for it to be resolved and then print a message.
+myPromise2.then((successMessage) => {
+    console.log("From Callback " + successMessage)
+  })
+//Console log after calling the promise
+  console.log("After calling promise");
 
+let myPromise4 = new Promise((resolve,reject) => {
+    setTimeout(() => {
+        public_users.get('/title/:title',function (req, res) {
+            //Write your code here
+            const title = req.params.title;
+            let keys = [];
+            keys = Object.keys(books);
+            for(let i = 0; i < keys.length; i++)
+            {
+              if(books[keys[i]].title === title)
+              {
+                  return res.send(books[keys[i]]);
+              }
+            }
+            return res.status(300).json({message: "Yet to be implemented"});
+          });
+          
+      resolve("Promise resolved")
+    },6000)})
+//Console log before calling the promise
+console.log("Before calling promise");
+//Call the promise and wait for it to be resolved and then print a message.
+myPromise4.then((successMessage) => {
+    console.log("From Callback " + successMessage)
+  })
+//Console log after calling the promise
+  console.log("After calling promise");
 // Get all books based on title
-public_users.get('/title/:title',function (req, res) {
-  //Write your code here
-  const title = req.params.title;
-  let keys = [];
-  keys = Object.keys(books);
-  for(let i = 0; i < keys.length; i++)
-  {
-    if(books[keys[i]].title === title)
-    {
-        return res.send(books[keys[i]]);
-    }
-  }
-  return res.status(300).json({message: "Yet to be implemented"});
-});
 
 //  Get book review
 public_users.get('/review/:isbn',function (req, res) {
